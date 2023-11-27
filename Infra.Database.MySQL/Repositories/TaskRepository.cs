@@ -1,8 +1,10 @@
-﻿using Domain.Task;
+﻿using Common.Core.DependencyInjection;
+using Domain.Task;
 using Domain.Task.Repositories;
 
 namespace Infra.Database.MySQL.Repositories
 {
+    [ServiceLocate(typeof(ITaskRepository))]
     public class TaskRepository : ITaskRepository
     {
         private readonly RequirementDbContext _context;

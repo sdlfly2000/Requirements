@@ -24,7 +24,6 @@ namespace Infra.Database.MySQL.Configure
             builder.Property(t => t.UserStoryId).HasColumnType("NVARCHAR").HasMaxLength(36);
 
             builder.HasKey("_id");
-            builder.HasBaseType<BaseRecord>();
             builder.ToTable("Tasks");
         }
     }
