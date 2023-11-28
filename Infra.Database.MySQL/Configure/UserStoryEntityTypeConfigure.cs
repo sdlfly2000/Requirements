@@ -1,12 +1,12 @@
-﻿using Domain.Task;
+﻿using Domain.UserStory;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Infra.Database.MySQL.Configure;
 
-public class TaskEntityTypeConfigure : IEntityTypeConfiguration<TaskEntity>
+public class UserStoryEntityTypeConfigure : IEntityTypeConfiguration<UserStoryEntity>
 {
-    public void Configure(EntityTypeBuilder<TaskEntity> builder)
+    public void Configure(EntityTypeBuilder<UserStoryEntity> builder)
     {        
         builder.Property("_id").HasColumnName("ID").HasColumnType("NVARCHAR").HasMaxLength(36);
         builder.Property(t => t.Title).HasColumnType("NVARCHAR");
@@ -22,6 +22,8 @@ public class TaskEntityTypeConfigure : IEntityTypeConfiguration<TaskEntity>
         builder.Property(t => t.UserStoryId).HasColumnType("NVARCHAR").HasMaxLength(36);
 
         builder.HasKey("_id");
-        builder.ToTable("Tasks");
+        builder.ToTable("UserStories");
+        builder.HasMany("_tasks")
+            .WithOne();
     }
 }
