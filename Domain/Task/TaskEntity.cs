@@ -5,5 +5,7 @@
         private string _id { get; }
 
         public TaskReference ID { get => new TaskReference(_id); }
+
+        public string? UserStoryId { get; set; }
     }
 }

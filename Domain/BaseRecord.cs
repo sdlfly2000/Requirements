@@ -22,7 +22,5 @@ namespace Domain
         public DateTime? CreatedOn { get; set; }
 
         public Guid? CreatedById { get; set; }
-
-        public Guid UserStoryId { get; set; }
     }
 }

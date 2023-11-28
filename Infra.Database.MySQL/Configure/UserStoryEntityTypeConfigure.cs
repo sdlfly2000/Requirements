@@ -19,11 +19,13 @@ public class UserStoryEntityTypeConfigure : IEntityTypeConfiguration<UserStoryEn
         builder.Property(t => t.ModifiedById).HasColumnType("NVARCHAR").HasMaxLength(36);
         builder.Property(t => t.CreatedOn).HasColumnType("DATETIME2");
         builder.Property(t => t.CreatedById).HasColumnType("NVARCHAR").HasMaxLength(36);
-        builder.Property(t => t.UserStoryId).HasColumnType("NVARCHAR").HasMaxLength(36);
+        builder.Property(t => t.UserRequirementId).HasColumnType("NVARCHAR").HasMaxLength(36);
 
         builder.HasKey("_id");
         builder.ToTable("UserStories");
-        builder.HasMany("_tasks")
-            .WithOne();
+        builder.Ignore(t => t.Tasks);
+        builder.HasMany(t => t.Tasks)
+            .WithOne()
+            .HasForeignKey(t => t.UserStoryId);
     }
 }
