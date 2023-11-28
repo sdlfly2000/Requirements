@@ -1,7 +1,8 @@
-﻿namespace Domain.Task.Repositories
+﻿using Requirement.Common;
+
+namespace Domain.Task.Repositories
 {
-    public interface ITaskRepository
+    public interface ITaskRepository : IRepository<TaskEntity>
     {
-        TaskEntity? Get(string id);
     }
 }

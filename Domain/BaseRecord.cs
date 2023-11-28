@@ -1,7 +1,8 @@
-﻿
+﻿using Requirement.Common;
+
 namespace Domain
 {
-    public abstract class BaseRecord
+    public abstract class BaseRecord: IEntity
     {
         public string? Title { get; set; }
 

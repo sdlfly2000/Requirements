@@ -1,6 +1,7 @@
 ﻿using Common.Core.DependencyInjection;
 using Domain.Task;
 using Domain.Task.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Database.MySQL.Repositories
 {
@@ -14,9 +15,32 @@ namespace Infra.Database.MySQL.Repositories
             _context = context;
         }
 
+        public string Add(TaskEntity entity)
+        {
+            GetSet().Add(entity);
+            _context.SaveChanges();
+            return entity.ID.Code;
+        }
+
         public TaskEntity? Get(string id)
         {
-            return _context.Set<TaskEntity>().Find(id);
+            return GetSet().Find(id);
         }
+
+        public string Update(TaskEntity entity)
+        {
+            GetSet().Update(entity);
+            _context.SaveChanges();
+            return entity.ID.Code;
+        }
+
+        #region
+
+        private DbSet<TaskEntity> GetSet()
+        {
+            return _context.Set<TaskEntity>();
+        }
+
+        #endregion
     }
 }
