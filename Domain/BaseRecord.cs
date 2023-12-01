@@ -14,7 +14,7 @@ namespace Domain
 
         public TimeSpan? Period { get; set; }
 
-        public string? Status { get; set; }
+        public RecordStatus Status { get; set; }
 
         public DateTime? ModifiedOn { get; set; }
 
