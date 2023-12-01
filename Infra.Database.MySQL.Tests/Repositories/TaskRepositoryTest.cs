@@ -24,9 +24,10 @@ namespace Infra.Database.MySQL.Tests.Repositories
             var repository = services.GetRequiredService<ITaskRepository>();
             var title = "test title";
             var description = "Test Description";
+            var ownerId = Guid.NewGuid();
 
             // Action
-            var task = TaskEntity.Create(title, description);
+            var task = TaskEntity.Create(title, description, ownerId, TimeSpan.FromDays(10), ownerId);
             var id = repository.Add(task);
 
             // Asserts
@@ -39,7 +40,7 @@ namespace Infra.Database.MySQL.Tests.Repositories
             // Arrange
             using var services = _serviceCollection.BuildServiceProvider();
             var repository = services.GetRequiredService<ITaskRepository>();
-            var id = "a0210fc2-6b2f-11ee-bd08-00262da8807c";
+            var id = "caa386e0-d664-435f-b3e9-fe26cd17dea0";
 
             // Action
             var task = repository.Get(id);

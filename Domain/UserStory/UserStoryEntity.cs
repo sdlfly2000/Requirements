@@ -17,9 +17,6 @@ namespace Domain.UserStory
             string? description,
             Guid? ownerId,
             TimeSpan? period,
-            DateTime? modifiedOn,
-            Guid? modifiedById,
-            DateTime? createdOn,
             Guid? createdById)
         {
             return new UserStoryEntity
@@ -31,6 +28,7 @@ namespace Domain.UserStory
                 Period = period,
                 Status = RecordStatus.Initial,
                 ModifiedOn = DateTime.UtcNow,
+                ModifiedById = ownerId,
                 CreatedOn = DateTime.UtcNow,
                 CreatedById = createdById          
             };

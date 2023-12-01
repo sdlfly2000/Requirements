@@ -1,4 +1,6 @@
-﻿namespace Domain.Task
+﻿using Domain.UserStory;
+
+namespace Domain.Task
 {
     public class TaskEntity : BaseRecord
     {
@@ -13,14 +15,25 @@
             _id = Guid.NewGuid().ToString();
         }
 
-        public static TaskEntity Create(string title, string description)
+        public static TaskEntity Create(
+            string title,
+            string? description,
+            Guid? ownerId,
+            TimeSpan? period,
+            Guid? createdById)
         {
-            return new TaskEntity()
+            return new TaskEntity
             {
                 Title = title,
-                Description = description,
+                Description = description ?? string.Empty,
+                OwnerId = ownerId,
+                StartedOn = DateTime.UtcNow,
+                Period = period,
+                Status = RecordStatus.Initial,
+                ModifiedOn = DateTime.UtcNow,
+                ModifiedById = ownerId,
                 CreatedOn = DateTime.UtcNow,
-
+                CreatedById = createdById
             };
         }
     }
