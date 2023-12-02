@@ -1,4 +1,5 @@
 ﻿using Domain.Task;
+using Domain.UserRequirement;
 using Domain.UserStory;
 using Infra.Database.MySQL.Configure;
 using Microsoft.EntityFrameworkCore;

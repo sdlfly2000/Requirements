@@ -1,6 +1,6 @@
 ﻿using Common.Core.DependencyInjection;
+using Domain.UserRequirement;
 using Domain.UserRequirement.Repositories;
-using Domain.UserStory;
 
 namespace Infra.Database.MySQL.Repositories
 {

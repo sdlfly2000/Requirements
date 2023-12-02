@@ -1,6 +1,8 @@
-﻿namespace Domain.UserRequirement.Repositories
+﻿using Requirement.Common;
+
+namespace Domain.UserRequirement.Repositories
 {
-    public interface IUserRequirementRepository
+    public interface IUserRequirementRepository : IRepository<UserRequirementEntity>
     {
     }
 }

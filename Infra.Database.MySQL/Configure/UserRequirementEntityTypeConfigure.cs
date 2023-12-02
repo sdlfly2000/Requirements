@@ -1,5 +1,5 @@
 ﻿using Domain;
-using Domain.UserStory;
+using Domain.UserRequirement;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

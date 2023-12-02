@@ -1,4 +1,6 @@
-﻿namespace Domain.UserStory
+﻿using Domain.UserStory;
+
+namespace Domain.UserRequirement
 {
     public class UserRequirementEntity : BaseRecord
     {
@@ -6,7 +8,7 @@
 
         public UserRequirementReference ID { get => new UserRequirementReference(_id); }
 
-        public string? UserRequirementId {  get; }
+        public string? UserRequirementId { get; }
 
         public virtual List<UserStoryEntity> UserStories { get; private set; } = new List<UserStoryEntity>();
 
@@ -19,7 +21,7 @@
         {
             UserStories.Add(userStory);
         }
-    
+
         public static UserRequirementEntity Create(
             string title,
             string? description,
@@ -38,7 +40,7 @@
                 ModifiedOn = DateTime.UtcNow,
                 ModifiedById = ownerId,
                 CreatedOn = DateTime.UtcNow,
-                CreatedById = createdById          
+                CreatedById = createdById
             };
         }
     }
