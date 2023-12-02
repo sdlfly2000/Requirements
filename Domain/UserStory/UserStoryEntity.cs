@@ -11,6 +11,16 @@ namespace Domain.UserStory
         public string? UserRequirementId {  get; }
 
         public virtual List<TaskEntity> Tasks { get; private set; } = new List<TaskEntity>();
+
+        public UserStoryEntity()
+        {
+            _id = Guid.NewGuid().ToString();
+        }
+
+        public void AddTask(TaskEntity task)
+        {
+            Tasks.Add(task);
+        }
     
         public static UserStoryEntity Create(
             string title,
