@@ -24,7 +24,10 @@ public class UserStoryEntityTypeConfigure : IEntityTypeConfiguration<UserStoryEn
 
         builder.HasKey("_id");
         builder.ToTable("UserStories");
+
         builder.Ignore(t => t.Tasks);
+        builder.HasIndex(t => t.UserRequirementId);
+
         builder.HasMany(t => t.Tasks)
             .WithOne()
             .HasForeignKey(t => t.UserStoryId);

@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="UserRequirement\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Common.Core\Requirement.Common.Core.csproj" />
     <ProjectReference Include="..\Common\Requirement.Common.csproj" />
   </ItemGroup>
