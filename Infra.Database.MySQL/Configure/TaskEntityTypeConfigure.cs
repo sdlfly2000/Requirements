@@ -23,6 +23,13 @@ public class TaskEntityTypeConfigure : IEntityTypeConfiguration<TaskEntity>
         builder.Property(t => t.UserStoryId).HasColumnType("NVARCHAR").HasMaxLength(36);
 
         builder.HasKey("_id");
+        builder.HasIndex(t => t.OwnerId);
+        builder.HasIndex(t => t.ModifiedById);
+        builder.HasIndex(t => t.CreatedById);
+        builder.HasIndex(t => t.UserStoryId);
+        
+        builder.Ignore(t => t.ID);
+
         builder.ToTable("Tasks");
     }
 }

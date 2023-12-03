@@ -1,6 +1,4 @@
-﻿using Domain.UserStory;
-
-namespace Domain.Task
+﻿namespace Domain.Task
 {
     public class TaskEntity : BaseRecord
     {

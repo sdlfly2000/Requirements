@@ -22,10 +22,15 @@ namespace Infra.Database.MySQL.Configure
             builder.Property(t => t.CreatedById).HasColumnType("NVARCHAR").HasMaxLength(36);
 
             builder.HasKey("_id");
-            builder.ToTable("UserRequirements");
+            builder.HasIndex(t => t.OwnerId);
+            builder.HasIndex(t => t.ModifiedById);
+            builder.HasIndex(t => t.CreatedById);
 
             builder.Ignore(t => t.UserStories);
+            builder.Ignore(t => t.ID);
 
+            builder.ToTable("UserRequirements");
+            
             builder.HasMany(t => t.UserStories)
                 .WithOne()
                 .HasForeignKey(t => t.UserRequirementId);

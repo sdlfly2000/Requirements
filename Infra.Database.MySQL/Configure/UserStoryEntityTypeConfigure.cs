@@ -23,10 +23,15 @@ public class UserStoryEntityTypeConfigure : IEntityTypeConfiguration<UserStoryEn
         builder.Property(t => t.UserRequirementId).HasColumnType("NVARCHAR").HasMaxLength(36);
 
         builder.HasKey("_id");
+        builder.HasIndex(t => t.OwnerId);
+        builder.HasIndex(t => t.ModifiedById);
+        builder.HasIndex(t => t.CreatedById);
+        builder.HasIndex(t => t.UserRequirementId);
+
         builder.ToTable("UserStories");
 
         builder.Ignore(t => t.Tasks);
-        builder.HasIndex(t => t.UserRequirementId);
+        builder.Ignore(t => t.ID);
 
         builder.HasMany(t => t.Tasks)
             .WithOne()
