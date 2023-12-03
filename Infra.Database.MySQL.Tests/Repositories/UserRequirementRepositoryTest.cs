@@ -1,5 +1,4 @@
-﻿using Domain.Task.Repositories;
-using Domain.UserRequirement;
+﻿using Domain.UserRequirement;
 using Domain.UserRequirement.Repositories;
 using Domain.UserStory.Repositories;
 using Microsoft.Extensions.DependencyInjection;

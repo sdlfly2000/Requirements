@@ -11,6 +11,7 @@ namespace Requirement.Test.Common
             var container = new ServiceCollection();
 
             container.AddMemoryCache();
+            container.AddLogging();
             container.AddMySQLDatabase("server=192.168.71.151;database=Requirement;uid=sdlfly2000;password=sdl@1215;");
             //container.RegisterDomain("Application.Services", "Domain.Services", "Infra.Database.MySQL");
             container.RegisterDomain("Infra.Database.MySQL");
