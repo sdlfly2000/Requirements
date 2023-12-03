@@ -8,8 +8,6 @@ namespace Domain.UserRequirement
 
         public UserRequirementReference ID { get => new UserRequirementReference(_id); }
 
-        public string? UserRequirementId { get; }
-
         public virtual List<UserStoryEntity> UserStories { get; private set; } = new List<UserStoryEntity>();
 
         public UserRequirementEntity()

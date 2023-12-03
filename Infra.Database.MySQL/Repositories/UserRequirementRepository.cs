@@ -1,6 +1,7 @@
 ﻿using Common.Core.DependencyInjection;
 using Domain.UserRequirement;
 using Domain.UserRequirement.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Database.MySQL.Repositories
 {
@@ -23,7 +24,9 @@ namespace Infra.Database.MySQL.Repositories
 
         public UserRequirementEntity? Get(string id)
         {
-            return _context.UserRequirements.Find(id);
+            return _context.UserRequirements
+                .Include(ur => ur.UserStories)
+                .FirstOrDefault(ur => EF.Property<string>(ur, "_id").Equals(id));
         }
 
         public string Update(UserRequirementEntity entity)
