@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Database.MySQL.Repositories
 {
-    [ServiceLocate(typeof(IUserStoryRepository))]
     public class UserStoryRepository : IUserStoryRepository
     {
         private readonly RequirementDbContext _context;
@@ -19,7 +18,6 @@ namespace Infra.Database.MySQL.Repositories
         {
             var id = _context.UserStories.Add(entity)
                 .Entity.ID.Code;
-            _context.SaveChanges();
             return id;
         }
 
@@ -34,7 +32,6 @@ namespace Infra.Database.MySQL.Repositories
         public string Update(UserStoryEntity entity)
         {
             var id = _context.UserStories.Update(entity).Entity.ID.Code;
-            _context.SaveChanges();
             return id;
         }
     }

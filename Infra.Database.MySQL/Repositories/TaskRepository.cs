@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Database.MySQL.Repositories
 {
-    [ServiceLocate(typeof(ITaskRepository))]
     public class TaskRepository : ITaskRepository
     {
         private readonly RequirementDbContext _context;
@@ -18,7 +17,6 @@ namespace Infra.Database.MySQL.Repositories
         public string Add(TaskEntity entity)
         {
             GetSet().Add(entity);
-            _context.SaveChanges();
             return entity.ID.Code;
         }
 
@@ -30,7 +28,6 @@ namespace Infra.Database.MySQL.Repositories
         public string Update(TaskEntity entity)
         {
             GetSet().Update(entity);
-            _context.SaveChanges();
             return entity.ID.Code;
         }
 
