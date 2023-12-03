@@ -25,8 +25,9 @@ namespace Infra.Database.MySQL.Repositories
         public UserRequirementEntity? Get(string id)
         {
             return _context.UserRequirements
+                .Where(ur => EF.Property<string>(ur, "_id").Equals(id))
                 .Include(ur => ur.UserStories)
-                .FirstOrDefault(ur => EF.Property<string>(ur, "_id").Equals(id));
+                .First();
         }
 
         public string Update(UserRequirementEntity entity)

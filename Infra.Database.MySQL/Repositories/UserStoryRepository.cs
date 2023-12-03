@@ -1,6 +1,7 @@
 ﻿using Common.Core.DependencyInjection;
 using Domain.UserStory;
 using Domain.UserStory.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Database.MySQL.Repositories
 {
@@ -24,7 +25,10 @@ namespace Infra.Database.MySQL.Repositories
 
         public UserStoryEntity? Get(string Id)
         {
-            return _context.UserStories.Find(Id); ;
+            return _context.UserStories
+                .Where(us => EF.Property<string>(us, "_id").Equals(Id))
+                .Include(us => us.Tasks)
+                .First();
         }
 
         public string Update(UserStoryEntity entity)
