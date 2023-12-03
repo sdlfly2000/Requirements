@@ -19,6 +19,23 @@ namespace Infra.Database.MySQL.Tests.Repositories
         }
 
         [TestMethod, TestCategory(TestType.SystemTest)]
+        public void Given_UserStoryId_When_Get_Then_UserRequirement_Loaded()
+        {
+            // Arrange
+            using var services = _serviceCollection.BuildServiceProvider();
+            var userRequirementRepository = services.GetRequiredService<IUserRequirementRepository>();
+
+            var userRequirementId = "b8a443de-1c32-490a-8584-8c3437de8431";
+
+            // Action
+            var userRequirement = userRequirementRepository.Get(userRequirementId);
+
+            // Asserts
+            Assert.IsNotNull(userRequirement);
+            Assert.AreEqual("b8a443de-1c32-490a-8584-8c3437de8431", userRequirement.ID.Code);
+        }
+
+        [TestMethod, TestCategory(TestType.SystemTest)]
         public void Given_UserStoryId_When_Add_Then_UserStoryAddedToUserRequirement()
         {
             // Arrange
