@@ -1,12 +1,9 @@
 ﻿using Domain.Task;
-using Domain.Task.Repositories;
 using Domain.UserRequirement;
 using Domain.UserStory;
-using Domain.UserStory.Repositories;
 using Infra.Database.MySQL.UnitOfWork;
 using Microsoft.Extensions.DependencyInjection;
 using Requirement.Test.Common;
-using System.Threading.Tasks;
 
 namespace Infra.Database.MySQL.Tests.Repositories
 {
