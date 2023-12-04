@@ -31,12 +31,13 @@ namespace Infra.Database.MySQL.UnitOfWork
 
         public void Commit()
         {
-            if(_transaction == null)
+            _context.SaveChanges();
+
+            if (_transaction == null)
             {
                 return;
             }
-
-            _context.SaveChanges();
+            
             _transaction.Commit();
         }
 
