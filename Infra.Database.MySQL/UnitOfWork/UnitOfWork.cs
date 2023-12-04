@@ -3,6 +3,7 @@ using Domain.Task.Repositories;
 using Domain.UserRequirement.Repositories;
 using Domain.UserStory.Repositories;
 using Infra.Database.MySQL.Repositories;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Infra.Database.MySQL.UnitOfWork
 {
@@ -13,6 +14,8 @@ namespace Infra.Database.MySQL.UnitOfWork
         private readonly IUserStoryRepository _userStoryRepository;
         private readonly IUserRequirementRepository _userRequirementRepository;
         private readonly RequirementDbContext _context;
+
+        private IDbContextTransaction? _transaction;
 
         public UnitOfWork(RequirementDbContext context)
         {
@@ -26,9 +29,20 @@ namespace Infra.Database.MySQL.UnitOfWork
         public IUserStoryRepository UserStoryRepository { get => _userStoryRepository; }
         public IUserRequirementRepository UserRequirementRepository { get => _userRequirementRepository; }
 
-        public int Commit()
+        public void Commit()
         {
-            return _context.SaveChanges();
+            if(_transaction == null)
+            {
+                return;
+            }
+
+            _context.SaveChanges();
+            _transaction.Commit();
+        }
+
+        public void BeginTran()
+        {
+            _transaction = _context.Database.BeginTransaction();
         }
     }
 }
