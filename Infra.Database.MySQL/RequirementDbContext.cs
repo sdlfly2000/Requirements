@@ -10,7 +10,6 @@ using Microsoft.Extensions.Logging;
 
 namespace Infra.Database.MySQL
 {
-    [ServiceLocate(typeof(IRequirementUnitOfWork), ServiceType.Scoped)]
     public class RequirementDbContext : DbContext, IRequirementUnitOfWork
     {
         private readonly ILogger<RequirementDbContext> _logger;

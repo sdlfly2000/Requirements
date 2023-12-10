@@ -7,11 +7,11 @@ namespace Application.Commands
 {
     internal class CreateTaskCommandHandler : IRequestHandler<CreateTaskCommand, CreateTaskResponse>
     {
-        private readonly IUnitOfWork _uow;
+        private readonly IRequirementUnitOfWork _uow;
         private readonly ITaskRepository _taskRepository;
 
         public CreateTaskCommandHandler(
-            IUnitOfWork uow, 
+            IRequirementUnitOfWork uow, 
             ITaskRepository taskRepository)
         {
             _uow = uow;
