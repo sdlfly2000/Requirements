@@ -20,9 +20,9 @@ namespace Application.Commands
 
         public Task<CreateTaskResponse> Handle(CreateTaskCommand request, CancellationToken cancellationToken)
         {
-            var taskId = _taskRepository.Add(request.Task);
+            _taskRepository.Add(request.Task);
             _uow.SaveAllChanges();
-            return Task.FromResult(new CreateTaskResponse { TaskId = taskId });
+            return Task.FromResult(new CreateTaskResponse { TaskId = request.Task.ID.Code }); ;
         }
     }
 }
