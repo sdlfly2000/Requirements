@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Database.MySQL.Repositories
 {
+    [ServiceLocate(typeof(IUserStoryRepository))]
     public class UserStoryRepository : IUserStoryRepository
     {
         private readonly RequirementDbContext _context;

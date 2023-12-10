@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Common.Core\Requirement.Common.Core.csproj" />
-    <ProjectReference Include="..\Infra.Database.MySQL\Infra.Database.MySQL.csproj" />
+    <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,9 +1,11 @@
-﻿using Domain.UserRequirement;
+﻿using Common.Core.DependencyInjection;
+using Domain.UserRequirement;
 using Domain.UserRequirement.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Database.MySQL.Repositories
 {
+    [ServiceLocate(typeof(IUserRequirementRepository))]
     public class UserRequirementRepository : IUserRequirementRepository
     {
         private readonly RequirementDbContext _context;
