@@ -14,5 +14,13 @@ namespace Requirement.Common.Extentions
                     ServerVersion.AutoDetect(connectionString),
                     b => b.MigrationsAssembly("Infra.Database.MySQL")));
         }
+
+        public static IServiceCollection AddMSSQLDatabase(this IServiceCollection services, string connectionString)
+        {
+            return services.AddDbContext<RequirementDbContext>(
+                options => options.UseSqlServer(
+                    connectionString,
+                    b => b.MigrationsAssembly("Infra.Database.MySQL")));
+        }
     }
 }

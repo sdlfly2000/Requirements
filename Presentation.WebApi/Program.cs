@@ -9,7 +9,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddMySQLDatabase(builder.Configuration.GetConnectionString("RequirementDashboard")!);
+builder.Services.AddMSSQLDatabase(builder.Configuration.GetConnectionString("RequirementDashboard")!);
 
 var app = builder.Build();
 
