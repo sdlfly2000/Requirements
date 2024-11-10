@@ -12,7 +12,7 @@ import { environment } from '@environment/environment';
 export abstract class ResourceService<T> {
   protected readonly API_URL = `${
     environment.serverUrl
-  }/${this.getResourceUrl()}`;
+  }/api/${this.getResourceUrl()}`;
 
   private readonly HTTP_OPTIONS = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),

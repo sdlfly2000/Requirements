@@ -10,6 +10,7 @@ import { ResourceService } from '@core/services/resource-service.service';
   providedIn: 'root',
 })
 export class UserService extends ResourceService<User> {
+
   getResourceUrl(): string {
     return 'users';
   }
