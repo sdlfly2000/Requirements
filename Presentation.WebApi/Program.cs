@@ -1,4 +1,5 @@
 using Requirement.Common.Extentions;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddSerilog(
+    (configure) =>
+        configure.ReadFrom.Configuration(builder.Configuration));
 
 builder.Services.AddMSSQLDatabase(builder.Configuration.GetConnectionString("RequirementDashboard")!);
 

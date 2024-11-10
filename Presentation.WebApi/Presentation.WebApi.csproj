@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Common.Core\Requirement.Common.Core.csproj" />
     <ProjectReference Include="..\Requirement.Common.Extention\Requirement.Common.Extentions.csproj" />
   </ItemGroup>
 
