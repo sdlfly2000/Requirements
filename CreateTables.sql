@@ -1,21 +1,23 @@
 ﻿create table Users (
-	Id nvarchar(50),
+	Id nvarchar(36),
     Name nvarchar(255),
+    Email nvarchar(255),
+    AvatarUrl nvarchar(255),
     primary key (Id)
 );
 
 create table UserRequirements (
-	Id nvarchar(50),
+	Id nvarchar(36),
     Title nvarchar(255),
     Description nvarchar(255),
-    OwnerId nvarchar(50),
+    OwnerId nvarchar(36),
     StartedOn datetime,
     Period time,
     Status nvarchar(20),
     ModifiedOn datetime,
-    ModifiedById nvarchar(50),
+    ModifiedById nvarchar(36),
 	CreatedOn datetime,
-    CreatedById nvarchar(50),
+    CreatedById nvarchar(36),
 
     primary key (Id),
     foreign key (OwnerId) references Users(Id),
@@ -28,17 +30,17 @@ create table UserRequirements (
 );
 
 create table UserStories (
-	Id nvarchar(50),
+	Id nvarchar(36),
     Title nvarchar(255),
     Description nvarchar(255),
-    OwnerId nvarchar(50),
+    OwnerId nvarchar(36),
     StartedOn datetime,
     Period time,
     Status nvarchar(20),
     ModifiedOn datetime,
-    ModifiedById nvarchar(50),
+    ModifiedById nvarchar(36),
 	CreatedOn datetime,
-    CreatedById nvarchar(50),
+    CreatedById nvarchar(36),
     UserRequirementId nvarchar(36),
 
     primary key (Id),
