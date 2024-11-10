@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { registerLocaleData } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import en from '@angular/common/locales/en';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
@@ -25,6 +25,9 @@ import { environment } from '@environment/environment';
 import { CoreModule } from '@core/core.module';
 import { ProjectModule } from '@features/project/project.module';
 import { UserModule } from '@features/user/user.module';
+import { AuthService } from './auth.service';
+import { AuthInterceptor } from './auth.interceptor';
+import { AuthFailureInterceptor } from './auth-failure.interceptor';
 
 registerLocaleData(en);
 
@@ -55,7 +58,12 @@ registerLocaleData(en);
       : [],
     environment.production ? AngularFireAnalyticsModule : [],
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [
+    { provide: NZ_I18N, useValue: en_US },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthFailureInterceptor, multi: true },
+    { provide: AuthService}
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

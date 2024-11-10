@@ -1,3 +1,5 @@
+using Common.Core.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Requirement.Common.Extentions;
 using Serilog;
 
@@ -10,9 +12,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddMemoryCache();
+
 builder.Services.AddSerilog(
     (configure) =>
         configure.ReadFrom.Configuration(builder.Configuration));
+
+builder.Services
+    .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtCusScheme(builder.Configuration.GetSection("JWT").Get<JWTOptions>()!);
 
 builder.Services.AddMSSQLDatabase(builder.Configuration.GetConnectionString("RequirementDashboard")!);
 

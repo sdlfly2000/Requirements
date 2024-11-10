@@ -20,4 +20,8 @@
     <ProjectReference Include="..\Requirement.Common.Extention\Requirement.Common.Extentions.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Logs\" />
+  </ItemGroup>
+
 </Project>
